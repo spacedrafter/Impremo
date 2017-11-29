@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Posts</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+</head>
+<body>
+    <h1>Posts</h1>
+    {% for post in posts %}
+        <div class="container container-post">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8 post">
+                {{ post.user }}
+                <a href="{% url 'post_single' pk=post.id %}">Link</a>
+                {{ post.create }}<br />
+                <div class="image-wrap">
+                    <img src="{{ MEDIA_URL }}{{ post.image.url }}" class="img-responsive"/>
+                </div>
+                <i class="icon-heart">Like</i>
+                    <br/>
+                {{ post.text }}
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    {% endfor %}
+    <div class="footer navbar-fixed-bottom">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-2">
+            <a href="/add">Добавить</a>
+        </div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-2"></div>
+        <div class="col-lg-3"></div>
+    </div>
+</body>
+</html>

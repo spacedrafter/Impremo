@@ -1,0 +1,21 @@
+h1{
+    color: #d3fd69;
+    border: 1px black;
+}
+
+.container-post{
+    margin-bottom: 10px;
+}
+
+.post{
+    border: 1px gray solid;
+    padding: 0px;
+}
+
+.footer{
+    background: blue;
+}
+
+.footer div a{
+    color:white;
+}
