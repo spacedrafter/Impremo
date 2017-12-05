@@ -16,7 +16,7 @@ class Post(models.Model):
     moder = models.BooleanField('Moder', default=False)
 
     def __str__(self):
-        return self.id
+        return self.text
 
 
 class Comment(models.Model):

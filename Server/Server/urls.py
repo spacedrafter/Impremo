@@ -19,11 +19,13 @@ from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from post.views import post_add
+from user.views import profile_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^', include('post.urls')),
     url(r'^add/$', post_add, name="post_add"),
+    url(r'^profile/$', profile_view, name="profile_view"),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 

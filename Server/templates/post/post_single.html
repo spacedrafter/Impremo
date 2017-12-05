@@ -1,35 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Posts</title>
-</head>
-    {{ post.create }}<br />
-    {% if post.image %}
-    <img src="{{ MEDIA_URL }}{{ post.image.url }}" style="width: 300px;
-                        height: 300px;"/><br/>
-    {% endif %}
-    {{ post.text }}
-    Обновлено: {{ post.update }}
-    <hr><br/>
+{% extends "../base.html" %}
+{% load static %}
 
-    <h1>Комментарии</h1>
-    {% for comm in post.comment_set.all %}
-        {{ comm.user }} <br>
-        {{ comm.text }} <br><br>
-    {% endfor %}
+{% block title %}
+    <title>Post</title>
+{% endblock %}
 
-    {% if user.is_authenticated %}
-    <p>
-        <form action="" method="post">
-            {% csrf_token %}
-            {{ form }}
-            <input type="submit" value="Send">
-        </form>
-    </p>
-    {% else %}
-        <p>Чтобы оставить комментарий, войдите на сайт</p>
-    {% endif %}
+{% block load_files %}
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+{% endblock %}
 
-</body>
-</html>
+{% block content %}
+    <div class="container container-post">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 post">
+            {% if post.image %}
+                <div class="image-wrap">
+                    <img src="{{ MEDIA_URL }}{{ post.image.url }}" class="img-responsive"/>
+                </div>
+            {% endif %}
+
+            {{ post.text }}
+            <br/>
+            Обновлено: {{ post.update }}
+            <hr><br/>
+
+            <h1>Комментарии</h1>
+            {% for comm in post.comment_set.all %}
+                {{ comm.user }} <br>
+                {{ comm.text }} <br><br>
+            {% endfor %}
+
+            {% if user.is_authenticated %}
+            <p>
+                <form action="" method="post">
+                    {% csrf_token %}
+                    {{ form }}
+                    <input type="submit" value="Send">
+                </form>
+            </p>
+            {% else %}
+                <p>Чтобы оставить комментарий, войдите на сайт</p>
+            {% endif %}
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+
+{% endblock %}

@@ -1,5 +1,5 @@
 h1{
-    color: #d3fd69;
+    color: grey;
     border: 1px black;
 }
 
@@ -9,13 +9,6 @@ h1{
 
 .post{
     border: 1px gray solid;
+    border-radius: 10%;
     padding: 0px;
-}
-
-.footer{
-    background: blue;
-}
-
-.footer div a{
-    color:white;
 }

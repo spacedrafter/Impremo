@@ -1,0 +1,68 @@
+{% extends "../base.html" %}
+{% load static %}
+
+
+{% block load_files %}
+    <link rel="stylesheet" href="{% static 'css/post.css' %}">
+{% endblock %}
+{% block title %}
+    <title>Profile</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container" style="border:1px solid;">
+        <div class="row">
+
+            <div class="col-lg-2 col-lg-offset-3">
+                <img class="img-fluid" src="{{ MEDIA_URL }}{{ profile.image.url }}" style="height: 150px; width: 150px; border-radius: 50%">
+            </div>
+
+            <div class="col-lg-4">
+
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <h3>{{ user }}</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <im>Посты: {{ count_post }}</im>
+                        </div>
+                        <div class="col-lg-1">
+                            <im>Подписчики: </im>
+                        </div>
+                        <div class="col-lg-1">
+                            <im>Подписки: </im>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row text-center text-lg-left col-lg-8 col-lg-offset-2">
+
+            <div class="col-lg-4 col-md-4 col-xs-6">
+                  <a href="#" class="d-block mb-4 h-100">
+                    <img class="img-fluid img-thumbnail" src="{{ MEDIA_URL }}{{ profile.image.url }}" alt="">
+                  </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-6">
+              <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+              </a>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-6">
+              <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
+              </a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
